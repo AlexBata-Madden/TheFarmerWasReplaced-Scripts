@@ -13,4 +13,15 @@ The idea is to spawn two drones into the first 31 rows, whose only concern is to
 
 ## Achievements
 
-![alt text](./img/pumpkin_unlock.png)
+![pumpkin_unlock](./img/pumpkin_unlock.png)
+
+## Leaderboards
+
+### Pumpkin
+
+Note: To make the code leaderboard applicable, change the `while True` in the drone functions to `while < 200000000`
+![pumpkin_leaderboard](./img/pumpkin_leaderboard.png)
+
+### Pumpkins_Single
+
+Not done
