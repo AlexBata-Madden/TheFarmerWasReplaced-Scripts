@@ -1,8 +1,5 @@
 def farm_wood():
 	
-	def is_even(n):
-		return n % 2 == 0
-	
 	def wood_worker():
 		while True:
 			for i in range(get_world_size()):
