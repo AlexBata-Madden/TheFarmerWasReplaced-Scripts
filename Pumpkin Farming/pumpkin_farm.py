@@ -1,10 +1,10 @@
 def farm_pumpkins():
-	def go_to(x, y):
+	def go_to(world_size, x, y):
 		while get_pos_x() != x:
 			current = get_pos_x()
 
-			east_distance = (x - current) % ws
-			west_distance = (current - x) % ws
+			east_distance = (x - current) % world_size
+			west_distance = (current - x) % world_size
 
 			if east_distance <= west_distance:
 				move(East)
@@ -14,8 +14,8 @@ def farm_pumpkins():
 		while get_pos_y() != y:
 			current = get_pos_y()
 
-			north_distance = (y - current) % ws
-			south_distance = (current - y) % ws
+			north_distance = (y - current) % world_size
+			south_distance = (current - y) % world_size
 
 			if north_distance <= south_distance:
 				move(North)
@@ -31,8 +31,8 @@ def farm_pumpkins():
 			plant(Entities.Pumpkin)
 
 
-	def work_column():
-		for _ in range(ws):
+	def work_column(world_size):
+		for _ in range(world_size):
 			prepare_pumpkin_tile()
 			move(North)
 
@@ -43,31 +43,33 @@ def farm_pumpkins():
 		return -1
 
 
-	def whole_field_ready():
-		go_to(0, 0)
+	def whole_field_ready(world_size):
+		go_to(world_size, 0, 0)
 		id1 = pumpkin_id_if_ready()
 
 		if id1 == -1:
 			return False
 
-		go_to(ws - 1, ws - 1)
+		go_to(world_size, world_size - 1, world_size - 1)
 		id2 = pumpkin_id_if_ready()
 
 		return id1 == id2
 
 
-	def pumpkin_worker():
-		while True:
-				work_column()
+	def make_pumpkin_worker(world_size):
+		def task():
+			while True:
+				work_column(world_size)
+		return task
 
 
-	def harvester_drone():
-		go_to(ws-1,0)
+	def harvester_drone(world_size):
+		go_to(world_size, world_size - 1, 0)
  
 		while True:
-			work_column()
+			work_column(world_size)
 
-			if whole_field_ready():
+			if whole_field_ready(world_size):
 				harvest()
 
 	clear()
@@ -75,10 +77,10 @@ def farm_pumpkins():
 	ws = get_world_size()
 
 	for _ in range(ws):
-		spawn_drone(pumpkin_worker)
+		spawn_drone(make_pumpkin_worker(ws))
 		move(East)
 
-	harvester_drone()
+	harvester_drone(ws)
 
 
 farm_pumpkins()

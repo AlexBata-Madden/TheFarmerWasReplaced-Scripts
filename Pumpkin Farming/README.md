@@ -9,19 +9,27 @@
 
 ## Implementation
 
-The idea is to spawn two drones into the first 31 rows, whose only concern is to plant pumpkins, and replace dead pumpkins with new ones. The main drone, in the final column, does this as well, but is also tasked with checking if all of the pumpkins have combined into a giant pumpkin, and if so, harvesting it. This check is done using the "measure()" call, which will return an id for the pumpkin. Checking that the ids of the pumpkins at (0,0) and (world_size, world_size) are the same guarantees that they are the same pumpkin.
+The idea is to spawn drones across the field, plant pumpkins, replace dead pumpkins with new ones, and then harvest once the pumpkins have combined into a giant pumpkin. The main drone also checks whether the field is ready by using `measure()` on two corners. If the ids at `(0, 0)` and `(world_size - 1, world_size - 1)` are the same, the field is one giant pumpkin and can be harvested.
+
+## Scripts
+
+- `pumpkin_farm.py`: Multi-drone pumpkin farming.
+- `pumpkin_farm_single.py`: Single-drone pumpkin farming.
 
 ## Achievements
 
-![pumpkin_unlock](./img/pumpkin_unlock.png)
+![pumpkins_unlock](./img/pumpkins_unlock.png)
 
 ## Leaderboards
 
 ### Pumpkin
 
-Note: To make the code leaderboard applicable, change the `while True` in the drone functions to `while < 200000000`
-![pumpkin_leaderboard](./img/pumpkin_leaderboard.png)
+Note: Using `pumpkin_farm.py`. To make the code leaderboard applicable, change the `while True` in the drone functions to `while < 200000000`.
+
+![pumpkins_leaderboard](./img/pumpkins_leaderboard.png)
 
 ### Pumpkins_Single
 
-Not done
+Note: Using `pumpkin_farm_single.py`. To make the code leaderboard applicable, change the `while True` in the drone functions to `while < 10000000`.
+
+![pumpkins_single_leaderboard](./img/pumpkins_single_leaderboard.png)
