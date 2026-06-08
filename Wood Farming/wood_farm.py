@@ -7,9 +7,9 @@ def farm_wood():
 			x = get_pos_x()
 			y = get_pos_y()
 
-			if(can_harvest()):
+			if can_harvest():
 				harvest()
-			if (x+y) % 2 == 0:
+			if (x + y) % 2 == 0:
 				plant(Entities.Tree)
 			else:
 				plant(Entities.Bush)

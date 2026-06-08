@@ -5,10 +5,10 @@ def farm_carrot():
 			if get_water() < 0.5:
 				use_item(Items.Water)
 
-			if(can_harvest()):
+			if can_harvest():
 				harvest()
 			if get_ground_type() != Grounds.Soil:
-					till()
+				till()
 			plant(Entities.Carrot)
 			move(North)
 

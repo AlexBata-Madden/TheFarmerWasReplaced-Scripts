@@ -8,4 +8,8 @@
 
 ## Implementation
 
-Very simple code, it spins up a drone for each column in the world, which uses weird substances on the grass and harvests it. If you don't have any weird substance, use fertilizer instead, until you get a decent amount of weird substance, and then switch back.
+Very simple code: it spins up a drone for each column in the world, uses weird substance on the grass, and harvests it. If you don't have any weird substance, use fertilizer instead until you get a decent amount of weird substance, and then switch back.
+
+## Scripts
+
+- `weird_substance_farm.py`: Multi-drone weird substance farming.
