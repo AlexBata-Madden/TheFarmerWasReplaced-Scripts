@@ -3,8 +3,8 @@ def farm_wood():
 	def go_to(x, y):
 		while get_pos_x() != x:
 			current = get_pos_x()
-			east_distance = (x - current) % size
-			west_distance = (current - x) % size
+			east_distance = (x - current) % ws
+			west_distance = (current - x) % ws
 
 			if east_distance <= west_distance:
 				move(East)
@@ -13,8 +13,8 @@ def farm_wood():
 
 		while get_pos_y() != y:
 			current = get_pos_y()
-			north_distance = (y - current) % size
-			south_distance = (current - y) % size
+			north_distance = (y - current) % ws
+			south_distance = (current - y) % ws
 
 			if north_distance <= south_distance:
 				move(North)
@@ -77,7 +77,7 @@ def farm_wood():
 		
 	clear()
 
-	size = get_world_size()
+	ws = get_world_size()
 	
 	start = 3
 	step = 7
@@ -85,9 +85,9 @@ def farm_wood():
 	go_to(start, start)
 
 	x = start
-	while x < size:
+	while x < ws:
 		y = start
-		while y < size:
+		while y < ws:
 			if x != start or y != start:
 				spawn_drone(make_worker_task(x, y))
 			y += step

@@ -1,8 +1,10 @@
 def farm_wood():
-	
+
 	def wood_worker():
+		ws = get_world_size()
+		
 		while True:
-			for i in range(get_world_size()):
+			for _ in range(ws):
 				if get_water() < 0.5:
 					use_item(Items.Water)
 				x = get_pos_x()
