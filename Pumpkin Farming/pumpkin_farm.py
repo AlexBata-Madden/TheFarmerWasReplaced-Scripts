@@ -29,6 +29,7 @@ def farm_pumpkins():
 
 		if get_entity_type() != Entities.Pumpkin:
 			plant(Entities.Pumpkin)
+			use_item(Items.Water)
 
 
 	def work_column(world_size):
