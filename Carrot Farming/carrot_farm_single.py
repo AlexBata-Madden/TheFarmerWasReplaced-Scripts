@@ -1,11 +1,10 @@
 def farm_hay():
 	
 	def hay_worker():
-		while True:
-			for _ in range(get_world_size()):
-				x = get_pos_x()
-				y = get_pos_y()
+		ws = get_world_size()
 
+		while True:
+			for _ in range(ws):
 				if(get_water() < 0.5):
 					use_item(Items.Water)
 	

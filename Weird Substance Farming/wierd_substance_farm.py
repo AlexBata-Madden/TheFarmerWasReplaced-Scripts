@@ -2,11 +2,10 @@ def farm_wierd_substance():
 
 	def wierd_substance_worker():
 		while True:
-			for _ in range(get_world_size()):
-				if can_harvest():
-					harvest()
-				use_item(Items.Weird_Substance)
-				move(North)
+			if can_harvest():
+				harvest()
+			use_item(Items.Weird_Substance)
+			move(North)
 	
 	clear()
 	
